@@ -1,8 +1,8 @@
 import React from 'react'
 import herosectionimage from '../assets/images/herosectionimage.png'
 import tarslogo from '../assets/icons/tarslogo.png'
-import contact from '../assets/images/contact-1.svg'
-import contactBtn from '../assets/images/contact-btn.png'
+import Contact from '../assets/images/Contact-1.svg'
+import ContactBtn from '../assets/images/Contact-btn.png'
 
 function ContactPage() {
   return (
@@ -27,18 +27,19 @@ function ContactPage() {
               </div>
               <div className='w-full h-[42px] mt-3 flex justify-center items-center gap-2 text-[12px] md:text-[15px] bg-gradient-to-r from-[#000000] to-[#545454] rounded-[5px] '>
                 <button>Send it to the TARS</button>
-                <img src={contactBtn} />
+                <img src={ContactBtn} />
               </div>
             </div>
             <div className='relative '>
               <img src={tarslogo} className='absolute top-5 left-5 w-[100px] md:w-[200px] ' />
-              <img src={contact} className=' w-[530px] ' />
+              <img src={Contact} className=' w-[530px] ' />
             </div>
           </div>
         </div>
       </div>
       <div>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6143.883931520455!2d79.05657134242165!3d21.139409934459813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c16fe7f30a71%3A0x96d1eb35911d1226!2sTARS%20Technologies!5e0!3m2!1sen!2sin!4v1758111187127!5m2!1sen!2sin"
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6143.883931520455!2d79.05657134242165!3d21.139409934459813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c16fe7f30a71%3A0x96d1eb35911d1226!2sTARS%20Technologies!5e0!3m2!1sen!2sin!4v1758111187127!5m2!1sen!2sin"
           className='w-full h-[200px] lg:h-[500px] ' allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </>

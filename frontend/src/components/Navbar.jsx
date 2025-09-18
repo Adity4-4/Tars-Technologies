@@ -11,7 +11,7 @@ const navLinks = [
   { path: "/product", label: "PRODUCT" },
   { path: "/cases", label: "CASES" },
   { path: "/blogs", label: "BLOGS" },
-  { path: "/contact", label: "CONTACT" },
+  { path: "/Contact", label: "Contact" },
 ]
 
 
