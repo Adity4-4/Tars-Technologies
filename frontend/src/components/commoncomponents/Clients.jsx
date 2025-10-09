@@ -46,52 +46,45 @@ function Clients() {
 
   const visibleImages = getVisibleImages();
 
-  // Motion variants for left, middle, right
-  const positions = [
-    {
-      scale: 0.8,
-      x: -430,
-      zIndex: 1,
-      className: "w-[170px] md:w-[320px] h-[110px] md:h-[220px]"
-    },
-    {
-      scale: 1,
-      x: 0,
-      zIndex: 2,
-      className: "w-[220px] md:w-[418px] h-[140px] md:h-[270px]"
-    },
-    {
-      scale: 0.8,
-      x: 430,
-      zIndex: 1,
-      className: "w-[170px] md:w-[320px] h-[110px] md:h-[220px]"
-    }
-  ];
+  // Responsive X values for left & right
+  const getXValue = (direction) => {
+    if (window.innerWidth < 640) return direction * 100;   // small screens
+    if (window.innerWidth < 1024) return direction * 250;  // medium screens
+    return direction * 430;                                 // large screens
+  };
 
   return (
     <div className="py-10 lg:py-28 text-center bg-gradient-to-t from-[#121212] to-[#1E1E1E] text-white overflow-hidden">
       <p className="text-[12px] lg:text-[18px] text-[#9C9C9C] font-[500]">Clients</p>
-      <p className="text-[16px] lg:text-[28px] mt-1 md:mt-3 uppercase font-[neutral_face]">
+      <p className="text-[16px] lg:text-[28px] mt-1 lg:mt-3 uppercase font-[neutral_face]">
         Building Lasting Partnerships with
         <br className="hidden md:block" /> Organizations Across Industries
       </p>
 
       {/* Carousel */}
-      <div className="relative flex justify-center items-center py-8 md:py-55">
+      <div className="relative flex justify-center items-center py-18 md:py-38 lg:py-55">
         <AnimatePresence initial={false}>
           {visibleImages.map((client, idx) => {
-            const { scale, x, zIndex } = positions[idx]; // only scale & x
+            let scale = idx === 1 ? 1 : 0.8;
+            let zIndex = idx === 1 ? 2 : 1;
+            let x =
+              idx === 0
+                ? -getXValue(1)  // left
+                : idx === 1
+                ? 0               // center
+                : getXValue(1);   // right
+
             return (
               <motion.img
                 key={client.public_id || idx}
                 src={client.url}
                 alt="Client"
-                style={{ zIndex }} // control stacking
+                style={{ zIndex }}
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale, x }}
                 exit={{ opacity: 0, scale: 0 }}
                 transition={{ duration: 0.6, ease: "easeInOut" }}
-                className="absolute w-[220px] md:w-[418px] h-[140px] md:h-[270px] object-cover border border-white "
+                className="absolute w-[180px] md:w-[280px] lg:w-[418px] h-[100px] md:h-[180px] lg:h-[270px] object-cover border border-white"
               />
             );
           })}
@@ -101,10 +94,10 @@ function Clients() {
       {/* Arrows */}
       <div className="flex justify-center gap-6 ">
         <button onClick={handlePrev}>
-          <img src={leftarrow} className="w-8 lg:w-auto" alt="left" />
+          <img src={leftarrow} className="w-8 md:w-10 lg:w-auto" alt="left" />
         </button>
         <button onClick={handleNext}>
-          <img src={rightarrow} className="w-8 lg:w-auto" alt="right" />
+          <img src={rightarrow} className="w-8 md:w-10 lg:w-auto" alt="right" />
         </button>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import axios from "axios";
 
 import Sidebar from '../components/Sidebar'
@@ -12,6 +12,8 @@ function AddCase() {
     description: "",
     details: { problemBefore: "", problemSolved: "", whatWeAdd: "" }
   });
+
+  const formRef = useRef(null);
 
   // cloudinary image upload
   const [uploading, setUploading] = useState(false);
@@ -127,7 +129,7 @@ function AddCase() {
         <h1 className='text-[25px] md:text-[35px] font-bold mb-6'>Add / Edit Cases</h1>
 
         {/* Add / Edit Form */}
-        <form onSubmit={editingId ? (e) => { e.preventDefault(); handleSave(editingId); } : handleSubmit} className='w-full lg:w-[450px] flex flex-col gap-4 mb-10'>
+        <form ref={formRef} onSubmit={editingId ? (e) => { e.preventDefault(); handleSave(editingId); } : handleSubmit} className='w-full lg:w-[450px] flex flex-col gap-4 mb-10'>
           {/* Image Upload */}
           <h3 className="font-semibold">Case's Images</h3>
           <input
@@ -236,7 +238,13 @@ function AddCase() {
                       description: item.description,
                       details: { ...item.details }
                     });
+
+                    // Scroll to form
+                    setTimeout(() => {
+                      formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
+                    }, 200)
                   }}
+
                   className='bg-blue-500 hover:bg-blue-400 px-2 md:px-3 py-1 rounded-sm text-white'
                 >
                   Edit

@@ -35,9 +35,9 @@ function BlogsPage() {
       <HeroSection
         heading={`BLOGS`}
         description={`Our blogs are more than just insights — they are a window into innovation. We share knowledge, ideas, and future-focused trends to keep you inspired, informed, and ready to embrace the next big opportunity.`}
+        section='#nextsection'
       />
-
-      <div className='py-10 lg:py-28 text-center bg-gradient-to-b from-black to-[#1E1E1E] text-white '>
+      <div id='nextsection' className='py-10 lg:py-28 text-center bg-gradient-to-b from-black to-[#1E1E1E] text-white '>
         <p className='text-[12px] lg:text-[18px] text-[#9C9C9C] font-[500] '>Blogs</p>
         <p className='text-[16px] lg:text-[28px] mt-1 md:mt-3 uppercase font-[neutral_face]'>THE TARS PERSPECTIVE</p>
         <div className='relative'>

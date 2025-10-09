@@ -28,10 +28,10 @@ function CountUp({ value }) {
 
 function Counts() {
   const stats = [
-    { value: "400+", label: "Projects Completed" },
-    { value: "15+", label: "Successful Years" },
+    { value: "50+", label: "Projects Completed" },
+    { value: "5+", label: "Successful Years" },
     { value: "98%", label: "Client Retention" },
-    { value: "30+", label: "Countries" },
+    { value: "10+", label: "Countries" },
   ];
 
   return (

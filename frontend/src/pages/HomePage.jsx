@@ -1,5 +1,7 @@
 import React from 'react'
+import { motion } from "framer-motion";
 import { IoIosArrowDown } from "react-icons/io";
+
 import herosectionimage from '../assets/images/herosectionimage.png'
 import herosectionicon1 from '../assets/icons/herosectionicon1.png'
 import herosectionicon2 from '../assets/icons/herosectionicon2.png'
@@ -41,21 +43,78 @@ function HomePage() {
           </div>
           <div className=' flex flex-col items-center gap-2 lg:gap-2 pt-12 md:pt-24 lg:pt-15 text-[13px] md:text-[15px] lg:text-[16px] font-[neutral_face]'>
             <p>SCROLL</p>
-            <IoIosArrowDown size={23} />
+            <div className="relative flex flex-col items-center h-12">
+              {[0, 1, 2].map((i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 0 }}
+                  animate={{ opacity: [0, 1, 0], y: [0, 10, 20] }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    delay: i * 0.3, // sequence each arrow
+                  }}
+                  className="absolute top-0"
+                >
+                  <motion.button
+                    onClick={() => {
+                      const element = document.querySelector('#nextsection');
+                      if (element) {
+                        const targetY = element.getBoundingClientRect().top + window.pageYOffset;
+                        const startY = window.scrollY;
+                        const distance = targetY - startY;
+                        const duration = 1200; // scroll duration (1.2s)
+                        let startTime = null;
+
+                        // Ease out bounce function (creates that soft bounce at the end)
+                        const easeOutBounce = (x) => {
+                          const n1 = 7.5625;
+                          const d1 = 2.75;
+                          if (x < 1 / d1) {
+                            return n1 * x * x;
+                          } else if (x < 2 / d1) {
+                            return n1 * (x -= 1.5 / d1) * x + 0.75;
+                          } else if (x < 2.5 / d1) {
+                            return n1 * (x -= 2.25 / d1) * x + 0.9375;
+                          } else {
+                            return n1 * (x -= 2.625 / d1) * x + 0.984375;
+                          }
+                        };
+
+                        const animation = (currentTime) => {
+                          if (!startTime) startTime = currentTime;
+                          const timeElapsed = currentTime - startTime;
+                          const progress = Math.min(timeElapsed / duration, 1);
+                          const ease = easeOutBounce(progress);
+                          window.scrollTo(0, startY + distance * ease);
+                          if (timeElapsed < duration) requestAnimationFrame(animation);
+                        };
+
+                        requestAnimationFrame(animation);
+                      }
+                    }}
+                  >
+                    <IoIosArrowDown size={23} />
+                  </motion.button>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
-      <Whoweare/>
+      <div id='nextsection'>
+        <Whoweare />
+      </div>
       <Counts />
       <Services />
       <Products />
 
       {/* testimonials */}
       <div className="py-10 lg:py-28 text-center bg-gradient-to-b from-[#1E1E1E] to-[#121212] text-white ">
-        <p className="text-[12px] lg:text-[18px] text-[#9C9C9C] font-[500] ">Testimonials</p>
-        <p className="text-[16px] lg:text-[28px] lg:leading-12 mt-1 md:mt-3 px-6 md:px-0 uppercase font-[neutral_face]">Voices of Trust: Client Stories, Testimonials<br className='hidden md:block' /> that Illuminate Our Shared Success.        </p>
-        <div className='flex flex-col md:flex-row gap-4 md:gap-16 px-6 md:px-30 py-8 md:py-20'>
+        <p className="text-[12px] md:text-[16px] lg:text-[18px] text-[#9C9C9C] font-[500] ">Testimonials</p>
+        <p className="text-[16px] md:text-[22px] lg:text-[28px] lg:leading-12 mt-1 md:mt-3 px-6 md:px-0 uppercase font-[neutral_face]">Voices of Trust: Client Stories, Testimonials<br className='hidden md:block' /> that Illuminate Our Shared Success.        </p>
+        <div className='flex flex-col md:flex-row gap-4 md:gap-5 lg:gap-16 px-6 md:px-5 lg:px-30 py-8 md:py-20'>
           <Testimonials
             image={herosectionimage}
           />
@@ -64,8 +123,8 @@ function HomePage() {
           />
         </div>
         <div className='flex justify-center gap-5 '>
-          <img src={leftarrow} className='w-8 lg:w-auto' />
-          <img src={rightarrow} className='w-8 lg:w-auto' />
+          <img src={leftarrow} className='w-8 md:w-10 lg:w-auto' />
+          <img src={rightarrow} className='w-8 md:w-10 lg:w-auto' />
         </div>
       </div>
 
