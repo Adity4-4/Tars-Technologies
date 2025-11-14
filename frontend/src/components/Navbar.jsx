@@ -49,6 +49,7 @@ function Navbar() {
   return (
     <>
       <nav
+    
         className={`fixed w-full z-50 flex justify-between items-center px-7 lg:px-16 py-7 lg:py-8 text-white transition-all duration-300 ${showNavbar ? "translate-y-0" : "-translate-y-full"
           } ${isScrolled ? "bg-black shadow-md" : "bg-transparent"}`}
       >

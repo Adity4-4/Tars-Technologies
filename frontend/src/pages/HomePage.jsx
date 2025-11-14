@@ -1,6 +1,8 @@
 import React from 'react'
 import { motion } from "framer-motion";
 import { IoIosArrowDown } from "react-icons/io";
+import Aos from 'aos';
+
 
 import herosectionimage from '../assets/images/herosectionimage.png'
 import herosectionicon1 from '../assets/icons/herosectionicon1.png'
@@ -20,28 +22,44 @@ import Whoweare from '../components/commoncomponents/Whoweare';
 
 
 function HomePage() {
-
+ function Linkdinprofile(){
+      window.open("https://www.linkedin.com/company/tars-technologies/posts/?feedView=all","_blank")
+    }
   return (
     <>
+   
       {/* hero section */}
-      <div className='relative w-full min-h-screen lg:h-[900px] '>
-        <img src={herosectionimage} className='absolute object-cover w-full h-full' />
-        <div className='absolute right-7 lg:right-40 top-70 md:top-110 lg:top-86 space-y-3 lg:space-y-5'>
-          <img src={herosectionicon1} className='w-9 md:w-auto' />
-          <img src={herosectionicon2} className='w-9 md:w-auto' />
-          <img src={herosectionicon3} className='w-9 md:w-auto' />
-          <img src={herosectionicon4} className='w-9 md:w-auto' />
+      <div  className='relative w-full min-h-screen lg:h-[600px] '>
+        <img src={herosectionimage} className='absolute object-cover w-full h-full ' />
+        <div  className='absolute flex right-5 lg:right-30 top-125 lg:top-110 space-y-1.4 gap-3 lg:space-y-1.2 z-50  '>
+          <img data-aos="flip-left"
+     data-aos-easing="ease-out-cubic"
+     data-aos-duration="2000" src={herosectionicon1} onClick={Linkdinprofile} className='w-9 md:w-12  ' />
+          <img data-aos="flip-left"
+     data-aos-easing="ease-out-cubic"
+     data-aos-duration="2000" src={herosectionicon2} className='w-9 md:w-12' />
+          <img data-aos="flip-left"
+     data-aos-easing="ease-out-cubic"
+     data-aos-duration="2000" src={herosectionicon3} className='w-9 md:w-12' />
+          <img data-aos="flip-left"
+     data-aos-easing="ease-out-cubic"
+     data-aos-duration="2000" src={herosectionicon4} className='w-9 md:w-12' />
         </div>
         <div className='absolute inset-0 flex flex-col justify-center items-center text-center tracking-wider text-white pt-35 lg:pt-45 '>
-          <p className='text-[26px] md:text-[42px] lg:text-[48px] text-transparent bg-clip-text bg-gradient-to-r from-white to-[#FFFFFF30] font-[neutral_face] '>ELEVATE YOUR VISION,<br className='block md:hidden' /> IGNITE<br className='hidden md:block' /> TOMORROW’S INNOVATION.</p>
-          <p className='text-[10px] md:text-[16px] lg:text-[24px] mt-10 lg:mt-15'>Crafting Digital Excellence for a Future<br /> Beyond Imagination.</p>
-          <div className='flex justify-center items-center gap-2 md:gap-4 lg:gap-20 mt-55 md:mt-70 lg:mt-53 text-[8px] md:text-[20px] lg:text-[24px] '>
-            <p>Full Cycle Product Development</p>
-            <p>Digital Product Design</p>
-            <p>Branding</p>
-            <p>Industry Automation Service</p>
+          <p data-aos="fade-right"
+     data-aos-offset="300"
+     data-aos-easing="ease-in-sine" className='text-[26px] md:text-[42px] lg:text-[48px] mt-40 text-transparent bg-clip-text bg-gradient-to-r from-white to-[#FFFFFF30] font-[neutral_face] '>ELEVATE YOUR VISION,<br className='block md:hidden' /> IGNITE<br className='hidden md:block' /> TOMORROW’S INNOVATION.</p>
+          <p data-aos="fade-left"
+     data-aos-anchor="#example-anchor"
+     data-aos-offset="500"
+     data-aos-duration="500" className='text-[10px] md:text-[16px] lg:text-[24px] mt-10 lg:mt-5'>Crafting Digital Excellence for a Future<br /> Beyond Imagination.</p>
+          <div className='flex justify-center items-center gap-2 md:gap-4 lg:gap-20 mt-55 md:mt-70 lg:mt-30 text-[8px] md:text-[20px] lg:text-[24px] '>
+            <p data-aos="zoom-out-up" >Full Cycle Product Development</p>
+            <p data-aos="zoom-out-up">Digital Product Design</p>
+            <p data-aos="zoom-out-up">Branding</p>
+            <p data-aos="zoom-out-up" >Industry Automation Service</p>
           </div>
-          <div className=' flex flex-col items-center gap-2 lg:gap-2 pt-12 md:pt-24 lg:pt-15 text-[13px] md:text-[15px] lg:text-[16px] font-[neutral_face]'>
+          <div className=' flex flex-col items-center gap-2 lg:gap-2 mb-36 pt-12 md:pt-24 lg:pt-8 text-[13px] md:text-[15px] lg:text-[16px] font-[neutral_face]'>
             <p>SCROLL</p>
             <div className="relative flex flex-col items-center h-12">
               {[0, 1, 2].map((i) => (

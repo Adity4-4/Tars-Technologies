@@ -55,8 +55,8 @@ function Clients() {
 
   return (
     <div className="py-10 lg:py-28 text-center bg-gradient-to-t from-[#121212] to-[#1E1E1E] text-white overflow-hidden">
-      <p className="text-[12px] lg:text-[18px] text-[#9C9C9C] font-[500]">Clients</p>
-      <p className="text-[16px] lg:text-[28px] mt-1 lg:mt-3 uppercase font-[neutral_face]">
+      <p data-aos="fade-down-right" className="text-[12px] lg:text-[18px] text-[#9C9C9C] font-[500]">Clients</p>
+      <p  data-aos="fade-up-left" className="text-[16px] lg:text-[28px] mt-1 lg:mt-3 uppercase font-[neutral_face]">
         Building Lasting Partnerships with
         <br className="hidden md:block" /> Organizations Across Industries
       </p>

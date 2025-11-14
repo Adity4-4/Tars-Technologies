@@ -11,17 +11,18 @@ import image from '../assets/images/herosectionimage.png'
 function AboutPage() {
   return (
     <>
-      <HeroSection
+      <HeroSection 
+      
         heading='ABOUT US'
         description='TARS Technologies is a team of passionate innovators dedicated to delivering simple and intelligent IT solutions. With expertise in web services, training, and development, we empower businesses to streamline processes, stay competitive, and embrace the future with confidence.'
         section='#nextsection'
       />
-      <div id='nextsection' className='pt-16 lg:pt-32 text-center bg-gradient-to-b from-black to-[#1E1E1E] text-white '>
-        <p className='text-[12px] lg:text-[18px] text-[#9C9C9C] font-[500] '>OUR Vision & Mission</p>
-        <p className='text-[16px] lg:text-[28px] mt-1 md:mt-3 uppercase font-[neutral_face]'>Epic Beginnings: Unveiling Our Essence,<br className='hidden md:block' /> Crafting Futures with Excellence.</p>
-        <div className='flex flex-col md:flex-row gap-10 lg:gap-70 py-12 lg:py-25 px-5 lg:px-25'>
-          <div className='w-[300px] md:w-[445px] text-left space-y-4 lg:space-y-14'>
-            <p className='text-[18px] lg:text-[28px] '>Vision: Vision for Tomorrow.</p>
+      <div  id='nextsection' className='pt-16 lg:pt-32 text-center bg-gradient-to-b from-black to-[#1E1E1E] text-white '>
+        <p data-aos="fade-down" className='text-[12px] lg:text-[18px] text-[#9C9C9C] font-[500] '>OUR Vision & Mission</p>
+        <p data-aos="fade-down" className='text-[16px] lg:text-[28px] mt-1 md:mt-3 uppercase font-[neutral_face]'>Epic Beginnings: Unveiling Our Essence,<br className='hidden md:block' /> Crafting Futures with Excellence.</p>
+        <div data-aos="fade-right" className='flex flex-col md:flex-row gap-10 lg:gap-40 py-12 lg:py-25 px-5 lg:px-25'>
+          <div className='w-[300px] md:w-[445px] text-left space-y-4 lg:space-y-14 ml-42'>
+            <p className='text-[18px] lg:text-[28px]  '>Vision: Vision for Tomorrow.</p>
             <p className='text-[12px] lg:text-[20px] '>"To create intelligent, simple, and future-ready IT solutions that empower businesses and enrich lives."</p>
           </div>
           <div className='w-[300px] md:w-[445px] text-left space-y-4 lg:space-y-14 '>

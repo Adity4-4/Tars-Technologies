@@ -44,18 +44,7 @@ function GetinTouch() {
       address: `81, Gotmare Complex, Dharampeth , WHC Road,
       Nagpur , Maharashtra, India - 440010`
     },
-    {
-      image: flag2,
-      title: "Development Office",
-      address: `2 County Court Blvd, Suite 400, Brampton,
-      Ontario L6W 3W8`
-    },
-    {
-      image: flag3,
-      title: "Development Office",
-      address: `2 County Court Blvd, Suite 400, Brampton,
-      Ontario L6W 3W8`
-    },
+
   ]
 
   return (

@@ -12,15 +12,18 @@ function HeroSection({ heading, description, section }) {
   return (
     <>
       <div className='relative '>
-        <img src={herosectionimage} className=' object-cover w-full h-[720px] lg:h-[730px]' />
+        <img src={herosectionimage} className=' object-cover w-full h-[920px] lg:h-[730px]' />
 
         {/* Inset shadow overlay */}
         <div className="absolute inset-0 shadow-[inset_0_0_200px_rgba(0,0,0,1)]"></div>
 
-        <div className='absolute right-7 lg:right-40 top-85 lg:top-94 space-y-3 lg:space-y-5 z-50 '>
-          <img
+        <div className='absolute right-7 lg:right-10 top-130 lg:top-140 
+            flex md:flex-row md:flex-wrap 
+            space-y-1.4 gap-3 md:space-y-1.5 md:space-x-1.5 
+            lg:space-x-5 z-50 '>
+          <img  
             src={herosectionicon1} className='w-9 md:w-auto'
-            onClick={() => window.open('https://www.linkedin.com/company/tars-technologies/', '_blank', "noopener,noreferrer")}
+            onClick={() => window.open('https://www.linkedin.com/company/tars-technologies/posts/?feedView=all', '_blank', "noopener,noreferrer")}
           />
           <img
             src={herosectionicon2} className='w-9 md:w-auto'
@@ -36,12 +39,12 @@ function HeroSection({ heading, description, section }) {
         <div className='absolute inset-0 flex flex-col justify-center items-center text-center tracking-wider text-white pt-20 md:pt-38 lg:pt-42 z-10'>
           <p className='text-[26px] md:text-[35px] lg:text-[48px] text-transparent bg-clip-text bg-gradient-to-r from-white to-[#FFFFFF30] font-[neutral_face] '>{heading}</p>
           <p className='w-[326px] md:w-[700px] lg:w-[1000px] text-[11px] md:text-[16px] lg:text-[24px] mt-8 lg:mt-24 tracking-widest leading-7 lg:leading-10'>{description}</p>
-          <div className=' flex flex-col items-center gap-2 lg:gap-2 pt-60 md:pt-50 lg:pt-30 text-[13px] lg:text-[16px] font-[neutral_face]'>
+          <div className=' flex flex-col items-center gap-2 lg:gap-2 pt-60 md:pt-50 lg:pt-30 mb-20 text-[13px] lg:text-[16px] font-[neutral_face]'>
             <p>SCROLL</p>
             <div className="relative flex flex-col items-center h-12">
               {[0, 1, 2].map((i) => (
                 <motion.div
-                  key={i}
+                  key={i} 
                   initial={{ opacity: 0, y: 0 }}
                   animate={{ opacity: [0, 1, 0], y: [0, 10, 20] }}
                   transition={{

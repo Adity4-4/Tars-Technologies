@@ -89,13 +89,15 @@ function Products() {
 
   return (
     <div className="py-10 lg:py-28 text-center bg-gradient-to-bl from-[#1E1E1E] to-[#121212] text-white relative overflow-hidden">
-      <p className="text-[12px] md:text-[16px] lg:text-[18px] text-[#9C9C9C] font-[500]">Product</p>
-      <p className="text-[16px] md:text-[22px] lg:text-[28px] mt-1 md:mt-3 px-6 md:px-0 uppercase font-[neutral_face]">
+      <p data-aos="fade-down" className="text-[12px] md:text-[16px] lg:text-[18px] text-[#9C9C9C] font-[500]">Product</p>
+      <p data-aos="fade-up" className="text-[16px] md:text-[22px] lg:text-[28px] mt-1 md:mt-3 px-6 md:px-0 uppercase font-[neutral_face]">
         From Challenge to Victory: Exploring Case
         <br className="hidden md:block" /> Studies of Innovation and Excellence
       </p>
 
-      <div className="relative flex flex-col lg:flex-row justify-center mt-6 lg:mt-14 px-5 md:px-5 lg:min-h-[300px]">
+      <div data-aos="fade-left"
+     data-aos-offset="300"
+     data-aos-easing="ease-in-sine" className="relative flex flex-col lg:flex-row justify-center mt-6 lg:mt-14 px-5 md:px-5 lg:min-h-[300px]">
         <AnimatePresence initial={false} custom={direction}>
           {currentProduct && (
             <motion.div
@@ -111,13 +113,13 @@ function Products() {
 
               {/* Image carousel */}
 
-              <div className="w-full md:w-[350px] lg:w-[650px] md:h-[460px] relative overflow-hidden rounded">
+              <div  className="w-full md:w-[350px] lg:w-[650px] md:h-[460px] relative overflow-hidden rounded">
                 <AnimatePresence custom={direction}>
-                  <motion.img
+                  <motion.img    
                     key={currentProduct.images[imageIndex]?.url}
                     src={currentProduct.images[imageIndex]?.url}
                     alt="product"
-                    className="absolute top-0 left-0 w-full h-full object-cover rounded"
+                    className="absolute top-0 left-0 w-full h-full object-fit rounded"
                     custom={direction}
                     variants={{
                       enter: (direction) => ({

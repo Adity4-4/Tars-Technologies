@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import axios from 'axios'
+import { day } from 'datetime'
 
 import Sidebar from '../components/Sidebar'
 
@@ -240,7 +241,7 @@ function AddBlog() {
             required
           />
           <input
-            type='text'
+            type={day}
             name='date'
             value={formData.date}
             onChange={handleChange}
