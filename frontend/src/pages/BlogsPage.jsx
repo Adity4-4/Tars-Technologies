@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import HeroSection from '../components/commoncomponents/HeroSection'
 import GetinTouch from '../components/commoncomponents/GetinTouch'
 
@@ -7,6 +8,28 @@ import blogProfile from '../assets/images/blog-profile.png'
 import BlogCard from '../components/BlogCard'
 
 function BlogsPage() {
+  const [blogs, setBlogs] = useState([])
+  const [showAll, setShowAll] = useState(false) // toggle between showing 3 or all
+
+  useEffect(() => {
+    const fetchCases = async () => {
+      try {
+        const res = await axios.get("http://localhost:5000/api/blogs")
+        setBlogs(res.data)
+      } catch (err) {
+        console.error("Error fetching Blogs", err)
+      }
+    }
+    fetchCases();
+  }, [])
+
+  // load more
+  const handleToggle = () => {
+    setShowAll(prev => !prev) // toggle showAll
+  }
+
+  const visibleCount = showAll ? blogs.length : 3 // determine how many to show
+
   return (
     <>
       <HeroSection
@@ -30,13 +53,32 @@ function BlogsPage() {
           </div>
         </div>
 
-        <div className='flex flex-col md:flex-row justify-center items-center gap-6 py-6 md:py-10 '>
-          <BlogCard name='Tracey Wilson' />
-          <BlogCard name='Tracey Wilson' />
-          <BlogCard name='Tracey Wilson' />
+        <div className='flex flex-wrap flex-col md:flex-row justify-center items-center gap-14 py-6 md:py-10 '>
+          {blogs.length > 0 ? (
+            blogs.slice(0, visibleCount).map((item) => (
+              <BlogCard
+                key={item._id}
+                name={item.name}
+                title={item.title}
+                tag={item.tag}
+                date={item.date}
+                images={item.images}
+                link={`/blogs-details/${item._id}`}
+              />
+            ))
+          ) : (
+            <p className='text-gray-400'>Loading...</p>
+          )}
         </div>
 
-        <button className='w-[90px] md:w-[120px] py-3 text-[12px] md:text-[16px] rounded-[6px] border '>Load More</button>
+        {blogs.length > 3 && (
+          <button
+            onClick={handleToggle}
+            className='w-[90px] md:w-[120px] py-3 text-[12px] md:text-[16px] rounded-[6px] border'
+          >
+            {showAll ? 'View Less' : 'Load More'}
+          </button>
+        )}
       </div>
 
       <GetinTouch />

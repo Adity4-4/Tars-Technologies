@@ -13,7 +13,7 @@ function Footer() {
               <p><Link to='/about' >About us</Link></p>
               <p><Link to='/services' >Services</Link></p>
               <p><Link to='/product' >Products</Link></p>
-              <p><Link to='/contact' >Contact</Link></p>
+              <p><Link to='/Contact' >Contact</Link></p>
             </div>
             <div className='text-center md:text-left space-y-3 lg:space-y-6'>
               <p className='text-white font-[500] text-[14px] md:text-[18px] '>Services</p>

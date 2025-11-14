@@ -5,17 +5,16 @@ import herosectionicon1 from '../assets/icons/herosectionicon1.png'
 import herosectionicon2 from '../assets/icons/herosectionicon2.png'
 import herosectionicon3 from '../assets/icons/herosectionicon3.png'
 import herosectionicon4 from '../assets/icons/herosectionicon4.png'
-import whoweare from '../assets/images/whoweare.png'
 import rightarrow from '../assets/icons/r-arrow.png'
 import leftarrow from '../assets/icons/l-arrow.png'
 
 import Testimonials from '../components/homecomponents/Testimonials';
 import Clients from '../components/commoncomponents/Clients';
 import GetinTouch from '../components/commoncomponents/GetinTouch';
-import Whoweare from '../components/commoncomponents/Whoweare';
 import Counts from '../components/commoncomponents/Counts';
 import Services from '../components/commoncomponents/Services';
 import Products from '../components/commoncomponents/Products';
+import Whoweare from '../components/commoncomponents/Whoweare';
 
 
 function HomePage() {
@@ -23,38 +22,31 @@ function HomePage() {
   return (
     <>
       {/* hero section */}
-      <div className='relative w-full h-[710px] lg:h-[900px] '>
-        <img src={herosectionimage} className='absolute object-cover w-full h-[710px] lg:h-[900px]' />
-        <div className='absolute right-7 lg:right-40 top-68 lg:top-86 space-y-3 lg:space-y-5'>
+      <div className='relative w-full min-h-screen lg:h-[900px] '>
+        <img src={herosectionimage} className='absolute object-cover w-full h-full' />
+        <div className='absolute right-7 lg:right-40 top-70 md:top-110 lg:top-86 space-y-3 lg:space-y-5'>
           <img src={herosectionicon1} className='w-9 md:w-auto' />
           <img src={herosectionicon2} className='w-9 md:w-auto' />
           <img src={herosectionicon3} className='w-9 md:w-auto' />
           <img src={herosectionicon4} className='w-9 md:w-auto' />
         </div>
         <div className='absolute inset-0 flex flex-col justify-center items-center text-center tracking-wider text-white pt-35 lg:pt-45 '>
-          <p className='text-[26px] lg:text-[48px] text-transparent bg-clip-text bg-gradient-to-r from-white to-[#FFFFFF30] font-[neutral_face] '>ELEVATE YOUR VISION,<br className='block md:hidden' /> IGNITE<br className='hidden md:block' /> TOMORROW’S INNOVATION.</p>
-          <p className='text-[10px] lg:text-[24px] mt-10 lg:mt-15'>Crafting Digital Excellence for a Future<br /> Beyond Imagination.</p>
-          <div className='flex justify-center items-center gap-2 lg:gap-20 mt-55 lg:mt-53 text-[8px] lg:text-[24px] '>
+          <p className='text-[26px] md:text-[42px] lg:text-[48px] text-transparent bg-clip-text bg-gradient-to-r from-white to-[#FFFFFF30] font-[neutral_face] '>ELEVATE YOUR VISION,<br className='block md:hidden' /> IGNITE<br className='hidden md:block' /> TOMORROW’S INNOVATION.</p>
+          <p className='text-[10px] md:text-[16px] lg:text-[24px] mt-10 lg:mt-15'>Crafting Digital Excellence for a Future<br /> Beyond Imagination.</p>
+          <div className='flex justify-center items-center gap-2 md:gap-4 lg:gap-20 mt-55 md:mt-70 lg:mt-53 text-[8px] md:text-[20px] lg:text-[24px] '>
             <p>Full Cycle Product Development</p>
             <p>Digital Product Design</p>
             <p>Branding</p>
             <p>Industry Automation Service</p>
           </div>
-          <div className=' flex flex-col items-center gap-2 lg:gap-2 pt-12 lg:pt-15 text-[13px] lg:text-[16px] font-[neutral_face]'>
+          <div className=' flex flex-col items-center gap-2 lg:gap-2 pt-12 md:pt-24 lg:pt-15 text-[13px] md:text-[15px] lg:text-[16px] font-[neutral_face]'>
             <p>SCROLL</p>
             <IoIosArrowDown size={23} />
           </div>
         </div>
       </div>
 
-      <div className='py-10 lg:py-28 text-center bg-gradient-to-b from-black to-[#1E1E1E] text-white '>
-        <p className='text-[12px] lg:text-[18px] text-[#9C9C9C] font-[500] '>Who We Are</p>
-        <p className='text-[16px] lg:text-[28px] mt-1 md:mt-3 uppercase font-[neutral_face]'>Epic Beginnings: Unveiling Our Essence,<br className='hidden md:block' /> Crafting Futures with Excellence.</p>
-        <Whoweare
-          image={whoweare}
-          button='Who We Are &nbsp; →'
-        />
-      </div>
+      <Whoweare/>
       <Counts />
       <Services />
       <Products />
