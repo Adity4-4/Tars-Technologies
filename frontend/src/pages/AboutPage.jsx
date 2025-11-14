@@ -5,7 +5,7 @@ import GetinTouch from '../components/commoncomponents/GetinTouch';
 import People from '../components/aboutcomponents/people'
 import Whoweare from '../components/commoncomponents/Whoweare';
 
-// hello added 
+// hello added dfghj
 import image from '../assets/images/herosectionimage.png'
 
 
