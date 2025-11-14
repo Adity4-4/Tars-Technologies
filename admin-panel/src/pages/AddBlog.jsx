@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import axios from 'axios'
+import { day } from 'datetime'
 
 import Sidebar from '../components/Sidebar'
 
@@ -18,6 +19,7 @@ function AddBlog() {
     points: [""]
   })
 
+  const formRef = useRef(null);
 
   // cloudinary upload
   const [uploading, setUploading] = useState(false);
@@ -65,8 +67,6 @@ function AddBlog() {
       images: prev.images.filter((img) => img.public_id !== public_id)
     }));
   };
-
-
 
   // Fetch Blogs
   const fetchBlogs = async () => {
@@ -192,17 +192,17 @@ function AddBlog() {
       <Sidebar />
       <div className="pl-8 md:pl-80 lg:pl-85 pt-24 md:pt-10 lg:pt-20 bg-gradient-to-l from-black to-[#1E1E1E] text-gray-300 min-h-screen pr-8 md:pr-8 lg:pr-16">
         <h1 className='text-[25px] md:text-[35px] font-bold mb-6'>Add / Edit Blogs</h1>
-
-        <form onSubmit={editingId ? (e) => { e.preventDefault(); handleSave(editingId); } : handleSubmit} className='flex flex-col gap-4 mb-10 lg:w-[450px] '>
+        {/* Form */}
+        <form ref={formRef} onSubmit={editingId ? (e) => { e.preventDefault(); handleSave(editingId); } : handleSubmit} className='flex flex-col gap-4 mb-10 lg:w-[450px] '>
           {/* ✅ Image Upload */}
           <div>
             <h3 className="font-semibold">Blog's Images</h3>
-            <input 
-              type="file" 
-              multiple 
-              accept="image/*" 
-              onChange={handleImageUpload} 
-              className='border border-gray-700 rounded-md p-2 w-full' 
+            <input
+              type="file"
+              multiple
+              accept="image/*"
+              onChange={handleImageUpload}
+              className='border border-gray-700 rounded-md p-2 w-full'
             />
             {uploading && <p className="text-gray-400 mt-2">Uploading...</p>}
             <div className="flex gap-3 flex-wrap mt-3">
@@ -241,7 +241,7 @@ function AddBlog() {
             required
           />
           <input
-            type='text'
+            type={day}
             name='date'
             value={formData.date}
             onChange={handleChange}
@@ -414,7 +414,13 @@ function AddBlog() {
                       sections: item.sections && item.sections.length > 0 ? item.sections : [{ subtitle: "", content: "" }], // ✅ preserve sections
                       points: item.points && item.points.length > 0 ? item.points : [""], // ✅ preserve points
                     })
+
+                    // Scroll to form
+                    setTimeout(() => {
+                      formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
+                    }, 200)
                   }}
+
                   className='bg-blue-500 hover:bg-blue-400 px-3 py-1 rounded-sm text-white'
                 >
                   Edit

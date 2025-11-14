@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Sidebar from "../components/Sidebar";
 import axios from "axios";
 
@@ -8,8 +8,15 @@ function AddProduct() {
   const [formData, setFormData] = useState({
     images: [], // cloudinary images
     title: "",
-    description: ""
+    description: "",
+    technologies: [],
   });
+
+  // Example list of available tech options
+  const availableTechnologies = ["HTML", "CSS", "Python", "WordPress"];
+
+  // Reference to the form for scrolling into view
+  const formRef = useRef(null);
 
   // cloudinary image upload
   const [uploading, setUploading] = useState(false);
@@ -83,32 +90,41 @@ function AddProduct() {
       if (editingId) {
         // Update existing product
         await axios.put(`http://localhost:5000/api/products/${editingId}`, formData);
+        alert("Product updated successfully!");
         setEditingId(null);
       } else {
         // Add new product
         await axios.post("http://localhost:5000/api/products", formData);
+        alert("Product added successfully!");
       }
-      setFormData({ title: "", description: "" });
+      setFormData({ images: [], title: "", description: "", technologies: [] });
       fetchProducts();
     } catch (err) {
       console.error("Error saving product:", err);
+      alert("Failed to save product. Please try again.");
     }
   };
 
   const handleEdit = (product) => {
-    setFormData({ 
+    setFormData({
       images: product.images || [],
-      title: product.title, 
-      description: product.description
+      title: product.title,
+      description: product.description,
+      technologies: product.technologies || []
     });
     setEditingId(product._id);
+
+    setTimeout(() => {
+      formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
+    }, 200)
   };
 
   const handleCancelEdit = () => {
-    setFormData({ 
-      images: [], 
-      title: "", 
-      description: "" 
+    setFormData({
+      images: [],
+      title: "",
+      description: "",
+      technologies: []
     });
     setEditingId(null);
   };
@@ -134,7 +150,7 @@ function AddProduct() {
         <h1 className='text-[25px] md:text-[35px] font-bold mb-6'>Add / Edit Product</h1>
 
         {/* ADD / EDIT FORM */}
-        <form onSubmit={handleSubmit} className="space-y-3 mb-6 md:w-[450px] ">
+        <form ref={formRef} onSubmit={handleSubmit} className="space-y-3 mb-6 md:w-[450px] ">
           {/* Image Upload */}
           <h3 className="font-semibold">Case's Images</h3>
           <input
@@ -168,9 +184,55 @@ function AddProduct() {
             placeholder="Description"
             value={formData.description}
             onChange={handleChange}
-            className='border border-gray-700 rounded-md p-2 w-full'
+            className='border border-gray-700 rounded-md p-2 w-full h-30 md:h-40'
             required
           />
+          <div>
+            <h3 className="font-semibold mb-2 text-gray-300">Technologies</h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+              {availableTechnologies.map((tech) => (
+                <label
+                  key={tech}
+                  className={`flex items-center gap-2 cursor-pointer bg-gray-800 hover:bg-gray-700 rounded-lg p-2 border border-gray-600 transition ${formData.technologies.includes(tech) ? "ring-2 ring-indigo-500" : ""
+                    }`}
+                >
+                  <input
+                    type="checkbox"
+                    checked={formData.technologies.includes(tech)}
+                    onChange={() => {
+                      setFormData((prev) => {
+                        const alreadySelected = prev.technologies.includes(tech);
+                        return {
+                          ...prev,
+                          technologies: alreadySelected
+                            ? prev.technologies.filter((t) => t !== tech)
+                            : [...prev.technologies, tech],
+                        };
+                      });
+                    }}
+                    className="accent-indigo-500 w-4 h-4"
+                  />
+                  <span className="text-gray-200 text-sm">{tech}</span>
+                </label>
+              ))}
+            </div>
+
+            {/* Optional: Show selected techs below */}
+            {formData.technologies.length > 0 && (
+              <div className="mt-3 flex flex-wrap gap-2">
+                {formData.technologies.map((tech) => (
+                  <span
+                    key={tech}
+                    className="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+
+
           <div className="flex gap-3">
             <button
               className='hover:bg-[#a2a0a0] bg-gray-300 text-black px-2 py-1 rounded-sm'
@@ -208,6 +270,7 @@ function AddProduct() {
                 </div>
                 <p className="text-gray-400"><strong>Title:</strong> {p.title}</p>
                 <p className="text-sm text-gray-400"><strong>Description:</strong> {p.description}</p>
+                <p className="text-sm text-gray-400"><strong>Technologies:</strong> {p.technologies?.join(", ")}</p>
                 <div className="flex justify-end gap-4 mt-4 text-[14px]">
                   <button
                     onClick={() => handleEdit(p)}

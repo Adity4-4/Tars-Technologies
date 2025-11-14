@@ -12,6 +12,10 @@ import BlogsPage from './pages/BlogsPage'
 import ContactPage from './pages/ContactPage'
 import CasesDetails from './pages/CasesDetails'
 import BlogDetails from './pages/BlogDetails'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+
 
 function App() {
 
@@ -40,3 +44,6 @@ function App() {
 }
 
 export default App
+
+
+AOS.init();

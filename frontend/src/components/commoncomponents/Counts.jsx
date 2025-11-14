@@ -1,13 +1,14 @@
 import React, { useRef } from "react";
 import { motion, useInView, useMotionValue, animate } from "framer-motion";
 
-function CountUp({ value }) {
-  const target = parseInt(value.replace(/\D/g, ""));
-  const suffix = value.replace(/\d/g, "");
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const motionValue = useMotionValue(0);
+// handles the animation
+function CountUp({ value }) {
+  const target = parseInt(value.replace(/\D/g, ""));  // target = 50
+  const suffix = value.replace(/\d/g, ""); // suffix = "+"
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" }); // detects when 
+  const motionValue = useMotionValue(0); // starts from 0
 
   React.useEffect(() => {
     if (isInView) {
@@ -26,12 +27,13 @@ function CountUp({ value }) {
   return <span ref={ref}>0{suffix}</span>;
 }
 
+// using Counts displays all the stats
 function Counts() {
   const stats = [
-    { value: "400+", label: "Projects Completed" },
-    { value: "15+", label: "Successful Years" },
+    { value: "50+", label: "Projects Completed" },
+    { value: "5+", label: "Successful Years" },
     { value: "98%", label: "Client Retention" },
-    { value: "30+", label: "Countries" },
+    { value: "10+", label: "Countries" },
   ];
 
   return (

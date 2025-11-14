@@ -11,7 +11,7 @@ const navLinks = [
   { path: "/product", label: "PRODUCT" },
   { path: "/cases", label: "CASES" },
   { path: "/blogs", label: "BLOGS" },
-  { path: "/Contact", label: "Contact" },
+  { path: "/Contact", label: "CONTACT" },
 ]
 
 
@@ -49,16 +49,17 @@ function Navbar() {
   return (
     <>
       <nav
-        className={`fixed w-full z-50 flex justify-between items-center px-6 lg:px-16 py-6 lg:py-8 text-white transition-all duration-300 ${showNavbar ? "translate-y-0" : "-translate-y-full"
+    
+        className={`fixed w-full z-50 flex justify-between items-center px-7 lg:px-16 py-7 lg:py-8 text-white transition-all duration-300 ${showNavbar ? "translate-y-0" : "-translate-y-full"
           } ${isScrolled ? "bg-black shadow-md" : "bg-transparent"}`}
       >
         {/* logo */}
         <NavLink to='/'>
-          <img src={tarslogo} className='w-[100px] lg:w-[190px] ' />
+          <img src={tarslogo} className='w-[140px] lg:w-[190px] ' />
         </NavLink>
 
         {/* desktop nav */}
-        <div className='hidden md:flex gap-8 lg:gap-14 text-[16px] '>
+        <div className='hidden md:flex gap-4 lg:gap-14 text-[13px] lg:text-[16px] '>
           {navLinks.map(({ path, label }) => (
             <NavLink
               key={path} to={path}
@@ -70,7 +71,7 @@ function Navbar() {
         </div>
 
         {/* desktop button */}
-        <button className='hidden md:block border border-white rounded-[8px] w-[196px] h-[49px] text-[18px] font-[600] hover:bg-white hover:text-black duration-300 '>Get a Free Quote</button>
+        <button className='hidden md:block border border-white rounded-[8px] w-[140px] lg:w-[196px] h-[40px] lg:h-[49px] text-[12px] lg:text-[18px] font-[600] hover:bg-white hover:text-black duration-300 '>Get a Free Quote</button>
 
         {/* mobile toggle button */}
         <div className='block md:hidden'>
@@ -86,7 +87,7 @@ function Navbar() {
 
       {/* mobile nav */}
       {isMenuOpen && (
-        <div className='md:hidden fixed w-full z-40  flex flex-col items-center space-y-5 pt-20 pb-7 bg-black text-white text-[12px] '>
+        <div className='md:hidden fixed w-full z-40 flex flex-col items-center space-y-5 pt-20 pb-7 bg-black text-white text-[12px] '>
           {navLinks.map(({ path, label }) => (
             <NavLink
               key={path} to={path} onClick={toggleMenu}

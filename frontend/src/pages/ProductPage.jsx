@@ -9,9 +9,11 @@ function ProductPage() {
       <HeroSection
         heading='PRODUCT'
         description='At Tars Technology, our products reflect the perfect blend of creativity and engineering. From concept to execution, we design solutions that deliver impact, efficiency, and long-term value for your success.'
+        section='#nextsection'
       />
-
-      <Products />
+      <div id='nextsection'>
+        <Products />
+      </div>
       <GetinTouch />
     </>
   )
