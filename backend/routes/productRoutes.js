@@ -6,8 +6,8 @@ const router = express.Router();
 
 router.post("/", async (req, res) => {
   try {
-    const { images, title, description } = req.body;
-    const product = new productModel({ images, title, description });
+    const { images, title, description, technologies } = req.body;
+    const product = new productModel({ images, title, description, technologies });
     await product.save();
     res.status(201).json(product);
   } catch (err) {
@@ -33,6 +33,7 @@ router.put("/:id", async (req, res) => {
 
     product.title = title || product.title;
     product.description = description || product.description;
+    product.technologies = req.body.technologies || product.technologies;
     if (images) product.images = images;
 
     await product.save();

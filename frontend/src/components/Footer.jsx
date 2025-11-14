@@ -5,18 +5,18 @@ import { Link } from 'react-router-dom'
 function Footer() {
   return (
     <>
-      <div className='text-[#FFFFFF99] text-[10px] md:text-[16px] bg-black '>
+      <div className='text-[#FFFFFF99] text-[10px] md:text-[14px] lg:text-[16px] bg-black '>
         <div className='flex flex-col-reverse md:flex-row justify-center items-center md:items-start gap-10 lg:gap-45 py-15 lg:py-24'>
           <div className='flex flex-col md:flex-row justify-center gap-8 lg:gap-35'>
             <div className='text-center md:text-left space-y-3 lg:space-y-6'>
-              <p className='text-white font-[500] text-[14px] md:text-[18px] '>Company</p>
+              <p className='text-white font-[500] text-[14px] md:text-[17px] lg:text-[18px] '>Company</p>
               <p><Link to='/about' >About us</Link></p>
               <p><Link to='/services' >Services</Link></p>
               <p><Link to='/product' >Products</Link></p>
               <p><Link to='/Contact' >Contact</Link></p>
             </div>
             <div className='text-center md:text-left space-y-3 lg:space-y-6'>
-              <p className='text-white font-[500] text-[14px] md:text-[18px] '>Services</p>
+              <p className='text-white font-[500] text-[14px] md:text-[17px] lg:text-[18px] '>Services</p>
               <p>Branding</p>
               <p>Web development</p>
               <p>Digital marketing</p>
@@ -25,13 +25,13 @@ function Footer() {
               <p>User testing</p>
             </div>
             <div className='text-center md:text-left space-y-3 lg:space-y-6'>
-              <p className='text-white font-[500] text-[14px] md:text-[18px] '>Resources</p>
+              <p className='text-white font-[500] text-[14px] md:text-[17px] lg:text-[18px] '>Resources</p>
               <p><Link to='/blogs' >Blog</Link></p>
               <p><Link to='/cases' >Case study</Link></p>
               <p>Testimonials</p>
             </div>
             <div className='text-center md:text-left space-y-3 lg:space-y-6'>
-              <p className='text-white font-[500] text-[14px] md:text-[18px] '>Follow us</p>
+              <p className='text-white font-[500] text-[14px] md:text-[17px] lg:text-[18px] '>Follow us</p>
               <p>LinkedIn</p>
               <p>Behance</p>
               <p>Dribble</p>

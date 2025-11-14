@@ -54,15 +54,15 @@ function BlogDetails() {
                     src={blogData.images?.[0]?.url || mainBlog}
                     className="h-[220px] md:h-[500px] w-[330px] md:w-[1200px] object-cover mx-auto mt-18 rounded-[12px]"
                 />
-                <div className='px-10 lg:px-50 space-y-6'>
-                    <p className='text-[48px] font-[700] '>{blogData.title}</p>
+                <div className='px-10 lg:px-50 space-y-2 md:space-y-6'>
+                    <p className='text-[25px] lg:text-[48px] font-[700] '>{blogData.title}</p>
                     <div>
                         <div className='flex items-center '>
                             <img src={blogProfile} className='w-[22px] md:w-[36px] ' />
-                            <span className='ml-2 text-[20px] text-[#dfe2ec] font-[600] '>{blogData.author}</span>
+                            <span className='ml-1 md:ml-2 text-[16px] md:text-[20px] text-[#dfe2ec] font-[600] '>{blogData.author}</span>
                         </div>
-                        <div className='ml-12 space-y-5 text-[16px] text-[#6D6E76] '>
-                            <div className='text-[20px] text-center'>
+                        <div className='ml-2 md:ml-12 space-y-5 text-[13px] md:text-[16px] text-[#6D6E76] '>
+                            <div className='text-[14px] md:text-[20px] text-center'>
                                 <span className='ml-2'>{formattedDate}</span>
                                 <span className='ml-2'>{blogData.readingTime}</span>
                             </div>
@@ -70,8 +70,8 @@ function BlogDetails() {
                             {/* Render sections dynamically */}
                             {blogData.sections && blogData.sections.length > 0 && (
                                 blogData.sections.map((section, index) => (
-                                    <div key={index} className='mt-6'>
-                                        <p className='text-[36px] text-[#eaebef]'>{section.subtitle}</p>
+                                    <div key={index} className='mt-4 md:mt-6'>
+                                        <p className='text-[20px] md:text-[36px] text-[#eaebef]'>{section.subtitle}</p>
                                         <p>{section.content}</p>
                                     </div>
                                 ))
@@ -79,7 +79,7 @@ function BlogDetails() {
 
                             {/* Render points */}
                             {blogData.points && blogData.points.length > 0 && (
-                                <ul className='list-disc list-inside text-[24px] text-[#bdbec4] mt-4'>
+                                <ul className='list-disc list-inside text-[14px] md:text-[24px] text-[#bdbec4] mt-3 md:mt-4'>
                                     {blogData.points.map((point, index) => (
                                         <li key={index}>{point}</li>
                                     ))}
@@ -93,7 +93,7 @@ function BlogDetails() {
 
             {/* Related blogs section */}
             <div className='bg-gradient-to-b from-black to-[#1E1E1E] text-white py-10 lg:py-20'>
-                <h2 className='text-3xl font-bold text-center mb-10'>More Blogs</h2>
+                <h2 className='text-[18px] md:text-3xl font-bold text-center mb-10'>More Blogs</h2>
                 <div className='flex flex-wrap justify-center gap-6'>
                     {relatedBlogs.map((item) => (
                         <BlogCard

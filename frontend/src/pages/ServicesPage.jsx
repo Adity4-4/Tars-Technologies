@@ -11,9 +11,11 @@ function ServicesPage() {
       <HeroSection
         heading='SERVICES'
         description='At Tars Technology, we believe that that innovation is the key to unlocking new possibilities. our team of visionary thinkers and skilled technologist are dedicated to developing your Dreams. '
+        section='#nextsection'
       />
-
-      <Services />
+      <div id='nextsection'>
+        <Services />
+      </div>
       <Counts />
       <Clients />
       <GetinTouch />

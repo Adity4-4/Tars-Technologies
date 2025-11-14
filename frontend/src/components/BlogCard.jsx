@@ -17,11 +17,11 @@ function BlogCard({ images, tag, title, name, date, link }) {
             <Link
                 to={link}
                 //  onClick={()=>{navigate(`/blogs-details/${id}`)}}
-                className='bg-black w-[280px] md:w-[350px] p-2 md:p-3 space-y-1 rounded-[12px] cursor-pointer'
+                className='bg-black w-[250px] md:w-[350px] p-2 md:p-3 space-y-1 rounded-[12px] cursor-pointer'
             >
                 <img
                     src={images?.[0]?.url || mainBlog}
-                    className="h-[180px] md:h-[240px] w-full object-cover rounded-[6px]"
+                    className="h-[170px] md:h-[240px] w-full object-cover rounded-[6px]"
                 />
                 <div className=' space-y-6 p-2 text-left '>
                     <p className='bg-[#4B6BFB4D] text-[#4B6BFB] w-[80px] md:w-[97px] py-1 px-2 inline text-[11px] md:text-[13px] rounded-[6px] '>{tag}</p>
